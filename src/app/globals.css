@@ -1,27 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+/* ------------------------------------------------------------ *\
+    Base
+\* ------------------------------------------------------------ */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+	@apply h-full;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	@apply antialiased font-[poppins] text-slate-600;
+}
+
+body > * {
+	@apply h-full grid grid-rows-[auto_1fr_auto];
+}
+
+/* ------------------------------------------------------------ *\
+	Default Hedings Color
+\* ------------------------------------------------------------ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply text-sky-950;
+}
+
+/* ------------------------------------------------------------ *\
+	Shell
+\* ------------------------------------------------------------ */
+
+.shell {
+	@apply max-w-screen-2xl mx-auto;
+}
+
+.shell-md {
+	@apply max-w-[83rem] mx-auto;
+}
+
+.shell-sm {
+	@apply max-w-screen-xl mx-auto;
+}
+
+.shell-xs {
+	@apply max-w-[55rem] mx-auto;
+}
+
+/* ------------------------------------------------------------ *\
+	Collapse
+\* ------------------------------------------------------------ */
+
+.collapse-body {
+	transition: max-height 0.3s ease-in-out, visibility 0.3s ease-in-out,
+		margin 0.3s ease-in-out, opacity 0.3s linear;
 }

@@ -1,24 +1,28 @@
 import Footer from "@/app/_components/Footer";
 import Header from "@/app/_components/Header";
+import getFooter from "../../../sanity/getters/getFooter";
+import getHeader from "../../../sanity/getters/getHeader";
+import getPageByUid from "../../../sanity/getters/getPageByUid";
+import getSettings from "../../../sanity/getters/getSettings";
 import RednderPageTypes from "@/app/_components/RenderPageTypes";
 import { draftMode } from "next/headers";
-import getFooter from "../../sanity/getters/getFooter";
-import getHeader from "../../sanity/getters/getHeader";
-import getPageByUid from "../../sanity/getters/getPageByUid";
-import getSettings from "../../sanity/getters/getSettings";
-import PreviewPage from "./_components/PreviewPage";
-import PreviewProvider from "./_components/PreviewProvider";
+import PreviewProvider from "../_components/PreviewProvider";
+import PreviewPage from "../_components/PreviewPage";
 
-export const metadata = {
-	title: "Home | Aankoopclaim",
-};
+export async function generateMetadata({ params }) {
+	const title = (await getPageByUid(undefined, params.uid)).title;
 
-export default async function Home() {
+	return {
+		title: title + " | Aankoopclaim",
+	};
+}
+
+export default async function Page({ params }) {
 	const preview = draftMode().isEnabled
 		? { token: process.env.SANITY_READ_TOKEN }
 		: undefined;
 
-	const page = await getPageByUid(preview, "home");
+	const page = await getPageByUid(preview, params.uid);
 	const header = await getHeader(preview);
 	const settings = await getSettings(preview);
 	const footer = await getFooter(preview);
