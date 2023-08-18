@@ -13,11 +13,7 @@ html {
 }
 
 body {
-	@apply antialiased font-[poppins] text-slate-600;
-}
-
-body > * {
-	@apply h-full grid grid-rows-[auto_1fr_auto];
+	@apply antialiased font-[poppins] text-slate-600 h-full grid grid-rows-[auto_1fr_auto];
 }
 
 /* ------------------------------------------------------------ *\
