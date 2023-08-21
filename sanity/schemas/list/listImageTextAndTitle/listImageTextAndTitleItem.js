@@ -8,7 +8,7 @@ export default defineType({
 		defineField({
 			name: "title",
 			title: "Title",
-			type: "string",
+			type: "localeString",
 		}),
 		defineField({
 			name: "body",
@@ -23,7 +23,7 @@ export default defineType({
 				defineField({
 					name: "alt",
 					title: "Alt Text",
-					type: "string",
+					type: "localeString",
 				}),
 			],
 		}),

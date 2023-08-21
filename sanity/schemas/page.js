@@ -13,7 +13,7 @@ export default defineType({
 		defineField({
 			name: "title",
 			title: "Title",
-			type: "string",
+			type: "localeString",
 		}),
 		defineField({
 			name: "body",

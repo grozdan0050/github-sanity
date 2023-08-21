@@ -8,7 +8,7 @@ export default defineType({
 		defineField({
 			name: "title",
 			title: "Title",
-			type: "string",
+			type: "localeString",
 		}),
 		defineField({
 			name: "body",
@@ -18,7 +18,7 @@ export default defineType({
 		defineField({
 			name: "listTitle",
 			title: "List Title",
-			type: "string",
+			type: "localeString",
 		}),
 		defineField({
 			name: "listBody",
@@ -39,7 +39,7 @@ export default defineType({
 		defineField({
 			name: "formTitle",
 			title: "Form Title",
-			type: "string",
+			type: "localeString",
 		}),
 		defineField({
 			name: "formList",
@@ -50,7 +50,7 @@ export default defineType({
 		defineField({
 			name: "formButtonText",
 			title: "Form Button Text",
-			type: "string",
+			type: "localeString",
 		}),
 		defineField({
 			name: "formListBackgroundColor",

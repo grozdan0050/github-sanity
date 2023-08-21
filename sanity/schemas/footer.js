@@ -13,7 +13,7 @@ export default defineType({
 				defineField({
 					name: "alt",
 					title: "Alt Text",
-					type: "string",
+					type: "localeString",
 				}),
 			],
 		}),
@@ -25,12 +25,12 @@ export default defineType({
 		defineField({
 			name: "chamberOfCommerceNumber",
 			title: "Chamber Of Commerce Number",
-			type: "string",
+			type: "localeString",
 		}),
 		defineField({
 			name: "copyright",
 			title: "Copyright",
-			type: "string",
+			type: "localeString",
 		}),
 		defineField({
 			name: "navigation",

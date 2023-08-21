@@ -8,7 +8,7 @@ export default defineType({
 		defineField({
 			name: "linkText",
 			title: "Link Text",
-			type: "string",
+			type: "localeString",
 		}),
 		defineField({
 			name: "linkUrl",

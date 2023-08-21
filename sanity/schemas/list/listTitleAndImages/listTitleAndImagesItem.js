@@ -13,7 +13,7 @@ export default defineType({
 				defineField({
 					name: "alt",
 					title: "Alt Text",
-					type: "string",
+					type: "localeString",
 				}),
 			],
 		}),
