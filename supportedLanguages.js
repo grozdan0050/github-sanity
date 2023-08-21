@@ -1,6 +1,6 @@
 const supportedLanguages = [
-	{ id: "en", title: "English", isDefault: "true" },
-	{ id: "es", title: "Spanish" },
+	{ id: "en", flag: "🇬🇧", title: "English", isDefault: "true" },
+	{ id: "es", flag: "🇪🇸", title: "Spanish" },
 ];
 
 export default supportedLanguages;
