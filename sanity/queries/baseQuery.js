@@ -4,7 +4,7 @@ const textWithTitleQuery = groq`
     _type == 'textWithTitle' => {
         _type,
         'title': title[$locale],
-        body,
+        'body': body[$locale],
         'backgroundColor': backgroundColor.hex,
     },
 `;
@@ -13,7 +13,7 @@ const textWithTitleAndTableQuery = groq`
     _type == 'textWithTitleAndTable' => {
         _type,
         'title': title[$locale],
-        body,
+        'body': body[$locale],
         'backgroundColor': backgroundColor.hex,
         'table': {
             'rows': table.rows,

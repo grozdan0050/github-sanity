@@ -13,7 +13,7 @@ export default defineType({
 		defineField({
 			name: "body",
 			title: "Body",
-			type: "blockContent",
+			type: "richText",
 		}),
 		defineField({
 			name: "listTitle",
@@ -24,7 +24,7 @@ export default defineType({
 			name: "listBody",
 			title: "List Body",
 			type: "array",
-			of: [{ type: "reference", to: { type: "richText" } }],
+			of: [{ type: "reference", to: { type: "listItem" } }],
 		}),
 		defineField({
 			name: "badgeBackgroundColor",
@@ -45,7 +45,7 @@ export default defineType({
 			name: "formList",
 			title: "Form List",
 			type: "array",
-			of: [{ type: "reference", to: { type: "richText" } }],
+			of: [{ type: "reference", to: { type: "listItem" } }],
 		}),
 		defineField({
 			name: "formButtonText",

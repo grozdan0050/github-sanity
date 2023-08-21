@@ -20,7 +20,7 @@ export default defineType({
 		defineField({
 			name: "body",
 			title: "body",
-			type: "blockContent",
+			type: "richText",
 		}),
 		defineField({
 			name: "chamberOfCommerceNumber",

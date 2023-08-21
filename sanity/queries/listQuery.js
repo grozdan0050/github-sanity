@@ -8,7 +8,7 @@ const listCollapsibleQuery = groq`
         items[]-> {
             _id,
             'title': title[$locale],
-            body,
+            'body': body[$locale],
         },
     },
 `;
@@ -17,13 +17,13 @@ const listCollapsibleWithTitleTextAndImageQuery = groq`
     _type == 'listCollapsibleWithTitleTextAndImage' => {
         _type,
         'title': title[$locale],
-        body,
+        'body': body[$locale],
         'itemsBackgroundColor':itemsBackgroundColor.hex,
         'backgroundColor': backgroundColor.hex,
         items[]-> {
             _id,
             'title': title[$locale],
-            body,
+            'body': body[$locale],
         },
         'link': {
             'text': linkText[$locale],
@@ -46,7 +46,7 @@ const listImageTextAndTitleQuery = groq`
         items[]->{
             _id,
             'title': title[$locale],
-            body,
+            'body': body[$locale],
             'badge': {
                 'iconColor': badgeIconColor.hex,
                 'backgroundColor': badgeBackgroundColor.hex,
@@ -72,7 +72,7 @@ const listInlineQuery = groq`
         'backgroundColor': backgroundColor.hex,
         items[]->{
             _id,
-            body,
+            'body': body[$locale],
             'backgroundColor': backgroundColor.hex,
         },
         'itemsBadge': {
@@ -97,7 +97,7 @@ const listLinkTitleTextDateAndImageQuery = groq`
         items[]->{
             _id,
             'title': title[$locale],
-            body,
+            'body': body[$locale],
             'backgroundColor': backgroundColor.hex,
             'link': {
                 'text': linkText[$locale],
@@ -121,7 +121,7 @@ const listLinkTitleTextAndDateQuery = groq`
             _id,
             publishDate,
             'title': title[$locale],
-            body,
+            'body': body[$locale],
             'link': {
                 'text': linkText[$locale],
                 'url': linkUrl,
@@ -137,7 +137,7 @@ const listTextWithTitleQuery = groq`
         items[]-> {
             _id,
             'title': title[$locale],
-            body,
+            'body': body[$locale],
         },
     },
 `;
@@ -163,7 +163,7 @@ const listTextWithTitleTextAndImageQuery = groq`
     _type == 'listTextWithTitleTextAndImage' => {
         _type,
         'title': title[$locale],
-        body,
+        'body': body[$locale],
         'image': {
             'url': image.asset->url,
             'width': image.asset->metadata.dimensions.width,
@@ -177,7 +177,7 @@ const listTextWithTitleTextAndImageQuery = groq`
         },
         items[]-> {
             _id,
-            body,
+            'body': body[$locale],
         },
     },
 `;

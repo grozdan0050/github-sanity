@@ -9,7 +9,7 @@ const footerQuery = groq`
             'height': logo.asset->metadata.dimensions.height,
             'alt': logo.alt[$locale],
         },
-        body,
+        'body': body[$locale],
         'chamberOfCommerceNumber': chamberOfCommerceNumber[$locale],
         'copyright': copyright[$locale],
         navigation[] {

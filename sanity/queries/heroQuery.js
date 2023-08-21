@@ -4,7 +4,7 @@ const defaultHeroQuery = groq`
     _type == 'defaultHero' => {
         _type,
         'title': title[$locale],
-        body,
+        'body': body[$locale],
         'image': {
             'url': image.asset->url,
             'width': image.asset->metadata.dimensions.width,
@@ -19,7 +19,7 @@ const animatedHeroQuery = groq`
     _type == 'animatedHero' => {
         _type,
         'title': title[$locale],
-        body,
+        'body': body[$locale],
         'link': {
             'text': linkText[$locale],
             'url': linkUrl,                    
@@ -38,11 +38,11 @@ const heroWithFormQuery = groq`
     _type == 'heroWithForm' => {
         _type,
         'title': title[$locale],
-        body,
+        'body': body[$locale],
         'listTitle': listTitle[$locale],
         listBody[]-> {
             _id,
-            body,
+            'body': body[$locale],
         },
         'backgroundColor': backgroundColor.hex,
         'badge': {
@@ -52,7 +52,7 @@ const heroWithFormQuery = groq`
         'formTitle': formTitle[$locale],
         formList[]-> {
             _id,
-            body,
+            'body': body[$locale],
         },
         'formButtonText': formButtonText[$locale],
         'formListBackgroundColor': formListBackgroundColor.hex,
