@@ -8,10 +8,11 @@ import getPageByUid from "../../sanity/getters/getPageByUid";
 import getSettings from "../../sanity/getters/getSettings";
 import PreviewPage from "./_components/PreviewPage";
 import PreviewProvider from "./_components/PreviewProvider";
-
-const locale = "es";
+import getLocale from "@/helpers/getLocale";
 
 export async function generateMetadata() {
+	const locale = getLocale();
+
 	const title = (await getPageByUid(undefined, "home", locale)).title;
 
 	return {
@@ -20,6 +21,8 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
+	const locale = getLocale();
+
 	const preview = draftMode().isEnabled
 		? { token: process.env.SANITY_READ_TOKEN }
 		: undefined;

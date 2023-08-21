@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LanguageSwitcher from "./LanguageSwitcher";
 import SanityNextImage from "./SanityNextImage";
 
 const Header = ({ header, settings }) => {
@@ -24,6 +25,8 @@ const Header = ({ header, settings }) => {
 						>
 							{settings.link.text}
 						</Link>
+
+						<LanguageSwitcher />
 					</nav>
 				</div>
 			</div>

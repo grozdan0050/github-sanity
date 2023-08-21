@@ -8,10 +8,11 @@ import RednderPageTypes from "@/app/_components/RenderPageTypes";
 import { draftMode } from "next/headers";
 import PreviewProvider from "../_components/PreviewProvider";
 import PreviewPage from "../_components/PreviewPage";
-
-const locale = "en";
+import getLocale from "@/helpers/getLocale";
 
 export async function generateMetadata({ params }) {
+	const locale = getLocale();
+
 	const title = (await getPageByUid(undefined, params.uid, locale)).title;
 
 	return {
@@ -20,6 +21,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Page({ params }) {
+	const locale = getLocale();
+
 	const preview = draftMode().isEnabled
 		? { token: process.env.SANITY_READ_TOKEN }
 		: undefined;

@@ -1,0 +1,27 @@
+import supportedLanguages from "../../supportedLanguages";
+import { match } from "@formatjs/intl-localematcher";
+import Negotiator from "negotiator";
+import { cookies, headers as getHeaders } from "next/headers";
+
+const getLocale = () => {
+	const locale = cookies().get("NEXT_LOCALE")?.value;
+	if (locale) {
+		return locale;
+	}
+
+	const locales = supportedLanguages.map((language) => language.id);
+	const defaultLocale = supportedLanguages
+		.map((language) => language.isDefault && language.id)
+		.filter((language) => language);
+
+	const languageHeader = getHeaders().get("accept-language");
+	const languages = new Negotiator({
+		headers: { "accept-language": languageHeader },
+	}).languages();
+
+	const preferredLocale = match(languages, locales, defaultLocale);
+
+	return preferredLocale;
+};
+
+export default getLocale;
