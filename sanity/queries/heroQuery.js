@@ -3,13 +3,13 @@ import { groq } from "next-sanity";
 const defaultHeroQuery = groq`
     _type == 'defaultHero' => {
         _type,
-        title,
+        'title': title[$locale],
         body,
         'image': {
             'url': image.asset->url,
             'width': image.asset->metadata.dimensions.width,
             'height': image.asset->metadata.dimensions.height,
-            'alt': image.alt,
+            'alt': image.alt[$locale],
         },
         'backgroundColor': backgroundColor.hex,
     },
@@ -18,17 +18,17 @@ const defaultHeroQuery = groq`
 const animatedHeroQuery = groq`
     _type == 'animatedHero' => {
         _type,
-        title,
+        'title': title[$locale],
         body,
         'link': {
-            'text': linkText,
+            'text': linkText[$locale],
             'url': linkUrl,                    
         },
         'image': {
             'url': image.asset->url,
             'width': image.asset->metadata.dimensions.width,
             'height': image.asset->metadata.dimensions.height,
-            'alt': image.alt,
+            'alt': image.alt[$locale],
         },
         'backgroundColor': backgroundColor.hex,
     },
@@ -37,9 +37,9 @@ const animatedHeroQuery = groq`
 const heroWithFormQuery = groq`
     _type == 'heroWithForm' => {
         _type,
-        title,
+        'title': title[$locale],
         body,
-        listTitle,
+        'listTitle': listTitle[$locale],
         listBody[]-> {
             _id,
             body,
@@ -49,12 +49,12 @@ const heroWithFormQuery = groq`
             'backgroundColor': badgeBackgroundColor.hex,
             'iconColor': badgeIconColor.hex,
         },
-        formTitle,
+        'formTitle': formTitle[$locale],
         formList[]-> {
             _id,
             body,
         },
-        formButtonText,
+        'formButtonText': formButtonText[$locale],
         'formListBackgroundColor': formListBackgroundColor.hex,
         'formListDotColor': formListDotColor.hex,
     },

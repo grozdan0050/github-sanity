@@ -4,7 +4,7 @@ const settingsQuery = groq`
     *[_type == 'settings'][0] {
         _type,
         'link': {
-            'text': linkText,
+            'text': linkText[$locale],
             'url': linkUrl,
         },
    }

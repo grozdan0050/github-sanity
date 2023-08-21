@@ -25,9 +25,9 @@ export default async function Page({ params }) {
 		: undefined;
 
 	const page = await getPageByUid(preview, params.uid, locale);
-	const header = await getHeader(preview);
-	const settings = await getSettings(preview);
-	const footer = await getFooter(preview);
+	const header = await getHeader(preview, locale);
+	const settings = await getSettings(preview, locale);
+	const footer = await getFooter(preview, locale);
 
 	const headerAndHeroBackgroundColor = page.body[0].backgroundColor;
 
@@ -45,7 +45,6 @@ export default async function Page({ params }) {
 						header={header}
 						settings={settings}
 						footer={footer}
-						locale={locale}
 					/>
 				</PreviewProvider>
 			</div>

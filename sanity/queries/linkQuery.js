@@ -4,9 +4,9 @@ const linkWithImageQuery = groq`
     _type == 'linkWithImage' => {
         _type,
         _id,
-        title,
+        'title': title[$locale],
             'link': {
-            'text': linkText,
+            'text': linkText[$locale],
             'url': linkUrl,
         }, 
         'backgroundColor': backgroundColor.hex,
@@ -14,7 +14,7 @@ const linkWithImageQuery = groq`
             'url': image.asset->url,
             'width': image.asset->metadata.dimensions.width,
             'height': image.asset->metadata.dimensions.height,
-            'alt': image.alt,
+            'alt': image.alt[$locale],
         },
     },
 `;

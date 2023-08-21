@@ -9,11 +9,15 @@ import getSettings from "../../sanity/getters/getSettings";
 import PreviewPage from "./_components/PreviewPage";
 import PreviewProvider from "./_components/PreviewProvider";
 
-const locale = "en";
+const locale = "es";
 
-export const metadata = {
-	title: "Home | Aankoopclaim",
-};
+export async function generateMetadata() {
+	const title = (await getPageByUid(undefined, "home", locale)).title;
+
+	return {
+		title: title + " | Aankoopclaim",
+	};
+}
 
 export default async function Home() {
 	const preview = draftMode().isEnabled
@@ -21,9 +25,9 @@ export default async function Home() {
 		: undefined;
 
 	const page = await getPageByUid(preview, "home", locale);
-	const header = await getHeader(preview);
-	const settings = await getSettings(preview);
-	const footer = await getFooter(preview);
+	const header = await getHeader(preview, locale);
+	const settings = await getSettings(preview, locale);
+	const footer = await getFooter(preview, locale);
 
 	const headerAndHeroBackgroundColor = page.body[0].backgroundColor;
 
@@ -41,7 +45,6 @@ export default async function Home() {
 						header={header}
 						settings={settings}
 						footer={footer}
-						locale={locale}
 					/>
 				</PreviewProvider>
 			</div>

@@ -7,13 +7,13 @@ const headerQuery = groq`
             'url': logo.asset->url,
             'width': logo.asset->metadata.dimensions.width,
             'height': logo.asset->metadata.dimensions.height,
-            'alt': logo.alt,
+            'alt': logo.alt[$locale],
         },
         navigation[] {
             _key,
             _type,
             'link': {
-                'text': linkText,
+                'text': linkText[$locale],
                 'url': linkUrl,
             },
         },
