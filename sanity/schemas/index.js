@@ -26,6 +26,7 @@ import listTextWithTitle from "./list/listTextWithTitle/listTextWithTitle";
 import listTextWithTitleTextAndImage from "./list/listTextWithTitleTextAndImage/listTextWithTitleTextAndImage";
 import page from "./page";
 import settings from "./settings";
+import localeString from "./localeTypes/localeString";
 
 export const schemaTypes = [
 	blockContent,
@@ -56,4 +57,5 @@ export const schemaTypes = [
 	listTitleAndImagesItem,
 	listTextWithTitleTextAndImage,
 	textWithTitleAndTable,
+	localeString,
 ];
