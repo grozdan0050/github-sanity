@@ -34,6 +34,8 @@ const animatedHeroQuery = groq`
     },
 `;
 
+// 'title': coalesce(title[$locale], title['en']),
+
 const heroWithFormQuery = groq`
     _type == 'heroWithForm' => {
         _type,
