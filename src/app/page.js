@@ -9,6 +9,8 @@ import getSettings from "../../sanity/getters/getSettings";
 import PreviewPage from "./_components/PreviewPage";
 import PreviewProvider from "./_components/PreviewProvider";
 
+const locale = "en";
+
 export const metadata = {
 	title: "Home | Aankoopclaim",
 };
@@ -18,7 +20,7 @@ export default async function Home() {
 		? { token: process.env.SANITY_READ_TOKEN }
 		: undefined;
 
-	const page = await getPageByUid(preview, "home");
+	const page = await getPageByUid(preview, "home", locale);
 	const header = await getHeader(preview);
 	const settings = await getSettings(preview);
 	const footer = await getFooter(preview);
@@ -39,6 +41,7 @@ export default async function Home() {
 						header={header}
 						settings={settings}
 						footer={footer}
+						locale={locale}
 					/>
 				</PreviewProvider>
 			</div>

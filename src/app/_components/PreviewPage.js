@@ -9,8 +9,8 @@ import settingsQuery from "../../../sanity/queries/settingsQuery";
 import footerQuery from "../../../sanity/queries/footerQuery";
 import Footer from "./Footer";
 
-const PreviewPage = ({ page, header, settings, footer }) => {
-	const [pageData] = useLiveQuery(page, pageQuery(page.uid));
+const PreviewPage = ({ page, header, settings, footer, locale }) => {
+	const [pageData] = useLiveQuery(page, pageQuery(page.uid, locale));
 	const [headerData] = useLiveQuery(header, headerQuery);
 	const [settingsData] = useLiveQuery(settings, settingsQuery);
 	const [footerData] = useLiveQuery(footer, footerQuery);

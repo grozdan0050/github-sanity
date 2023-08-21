@@ -9,8 +9,10 @@ import { draftMode } from "next/headers";
 import PreviewProvider from "../_components/PreviewProvider";
 import PreviewPage from "../_components/PreviewPage";
 
+const locale = "en";
+
 export async function generateMetadata({ params }) {
-	const title = (await getPageByUid(undefined, params.uid)).title;
+	const title = (await getPageByUid(undefined, params.uid, locale)).title;
 
 	return {
 		title: title + " | Aankoopclaim",
@@ -22,7 +24,7 @@ export default async function Page({ params }) {
 		? { token: process.env.SANITY_READ_TOKEN }
 		: undefined;
 
-	const page = await getPageByUid(preview, params.uid);
+	const page = await getPageByUid(preview, params.uid, locale);
 	const header = await getHeader(preview);
 	const settings = await getSettings(preview);
 	const footer = await getFooter(preview);
@@ -43,6 +45,7 @@ export default async function Page({ params }) {
 						header={header}
 						settings={settings}
 						footer={footer}
+						locale={locale}
 					/>
 				</PreviewProvider>
 			</div>

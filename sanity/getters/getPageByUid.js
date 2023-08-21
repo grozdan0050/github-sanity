@@ -1,7 +1,7 @@
 import { getChachedClient } from "../lib/getClient";
 import pageQuery from "../queries/pageQuery";
 
-const getPageByUid = (preview, uid) =>
-	getChachedClient(preview)(pageQuery(uid));
+const getPageByUid = (preview, uid, locale) =>
+	getChachedClient(preview)(pageQuery(uid, locale));
 
 export default getPageByUid;

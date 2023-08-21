@@ -4,10 +4,10 @@ import heroQuery from "./heroQuery";
 import linkQuery from "./linkQuery";
 import listQuery from "./listQuery";
 
-const pageQuery = (uid) => groq`
+const pageQuery = (uid, locale) => groq`
     *[_type == 'page' && uid == '${uid}'][0] { 
         uid,
-        title,
+        'title': title.${locale},
         body[] {
             ${heroQuery}
             ${listQuery}
