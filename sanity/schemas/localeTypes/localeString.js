@@ -1,9 +1,5 @@
 import { defineType } from "sanity";
-
-const supportedLanguages = [
-	{ id: "en", title: "English", isDefault: "true" },
-	{ id: "es", title: "Spanish" },
-];
+import supportedLanguages from "../../../supportedLanguages";
 
 export default defineType({
 	name: "localeString",
