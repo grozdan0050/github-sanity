@@ -3,7 +3,7 @@ import List from "@/app/_components/list/List";
 import Base from "./base/Base";
 import Link from "./link/Link";
 
-const RednderPageTypes = ({ types, index }) => {
+const RenderPageTypes = ({ types, index }) => {
 	const getComponent = (type) => {
 		const { _type } = type;
 
@@ -35,4 +35,4 @@ const RednderPageTypes = ({ types, index }) => {
 	return <main>{types.map((type, index) => getComponent(type, index))}</main>;
 };
 
-export default RednderPageTypes;
+export default RenderPageTypes;

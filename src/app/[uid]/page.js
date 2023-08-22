@@ -4,7 +4,7 @@ import getFooter from "../../../sanity/getters/getFooter";
 import getHeader from "../../../sanity/getters/getHeader";
 import getPageByUid from "../../../sanity/getters/getPageByUid";
 import getSettings from "../../../sanity/getters/getSettings";
-import RednderPageTypes from "@/app/_components/RenderPageTypes";
+import RenderPageTypes from "@/app/_components/RenderPageTypes";
 import { draftMode } from "next/headers";
 import PreviewProvider from "../_components/PreviewProvider";
 import PreviewPage from "../_components/PreviewPage";
@@ -63,7 +63,7 @@ export default async function Page({ params }) {
 		>
 			<Header header={header} settings={settings} />
 
-			<RednderPageTypes types={page.body} />
+			<RenderPageTypes types={page.body} />
 
 			<Footer footer={footer} />
 		</div>

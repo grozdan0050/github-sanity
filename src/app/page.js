@@ -1,6 +1,6 @@
 import Footer from "@/app/_components/Footer";
 import Header from "@/app/_components/Header";
-import RednderPageTypes from "@/app/_components/RenderPageTypes";
+import RenderPageTypes from "@/app/_components/RenderPageTypes";
 import { draftMode } from "next/headers";
 import getFooter from "../../sanity/getters/getFooter";
 import getHeader from "../../sanity/getters/getHeader";
@@ -63,7 +63,7 @@ export default async function Home() {
 		>
 			<Header header={header} settings={settings} />
 
-			<RednderPageTypes types={page.body} />
+			<RenderPageTypes types={page.body} />
 
 			<Footer footer={footer} />
 		</div>

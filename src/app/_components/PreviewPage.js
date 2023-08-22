@@ -2,7 +2,7 @@
 
 import pageQuery from "../../../sanity/queries/pageQuery";
 import { useLiveQuery } from "@sanity/preview-kit";
-import RednderPageTypes from "./RenderPageTypes";
+import RenderPageTypes from "./RenderPageTypes";
 import headerQuery from "../../../sanity/queries/headerQuery";
 import Header from "./Header";
 import settingsQuery from "../../../sanity/queries/settingsQuery";
@@ -19,7 +19,7 @@ const PreviewPage = ({ page, header, settings, footer }) => {
 		<>
 			<Header header={headerData} settings={settingsData} />
 
-			<RednderPageTypes types={pageData.body} />
+			<RenderPageTypes types={pageData.body} />
 
 			<Footer footer={footerData} />
 
