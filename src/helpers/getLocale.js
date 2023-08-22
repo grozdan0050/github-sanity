@@ -4,12 +4,13 @@ import Negotiator from "negotiator";
 import { cookies, headers as getHeaders } from "next/headers";
 
 const getLocale = () => {
+	const locales = supportedLanguages.map((language) => language.id);
 	const locale = cookies().get("NEXT_LOCALE")?.value;
-	if (locale) {
+
+	if (locale && locales.includes(locale)) {
 		return locale;
 	}
 
-	const locales = supportedLanguages.map((language) => language.id);
 	const defaultLocale = supportedLanguages
 		.map((language) => language.isDefault && language.id)
 		.filter((language) => language);
