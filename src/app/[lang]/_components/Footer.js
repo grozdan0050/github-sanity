@@ -33,11 +33,17 @@ const Footer = ({ footer }) => {
 					<span className="font-medium">{footer.copyright}</span>
 
 					<ul className="flex flex-wrap gap-8 font-semibold">
-						{footer.navigation.map((item, index) => (
-							<li key={item._key + index}>
-								<Link href={item.link.url}>{item.link.text}</Link>
-							</li>
-						))}
+						{footer.navigation.map((item, index) => {
+							const { _key, link } = item;
+
+							const { url, text } = link;
+
+							return (
+								<li key={_key + index}>
+									<Link href={url}>{text}</Link>
+								</li>
+							);
+						})}
 					</ul>
 				</nav>
 			</div>
