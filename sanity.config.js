@@ -6,6 +6,7 @@ import { table } from "@sanity/table";
 import { schemaTypes } from "./sanity/schemas";
 import { languageFilter } from "@sanity/language-filter";
 import supportedLanguages from "./supportedLanguages";
+import { defaultDocumentNode } from "./sanity/desk/defaultDocumentNode";
 
 const config = defineConfig({
 	projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
@@ -14,7 +15,7 @@ const config = defineConfig({
 	apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
 	basePath: "/admin",
 	plugins: [
-		deskTool(),
+		deskTool({ defaultDocumentNode }),
 		visionTool(),
 		colorInput(),
 		table(),

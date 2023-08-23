@@ -10,18 +10,20 @@ import pageQuery from "../../../../sanity/queries/pageQuery";
 import headerQuery from "../../../../sanity/queries/headerQuery";
 
 const PreviewPage = ({ page, header, settings, footer, locale }) => {
-	const [pageData] = useLiveQuery(page, pageQuery(page.uid, locale));
-	const [headerData] = useLiveQuery(header, headerQuery(locale));
-	const [settingsData] = useLiveQuery(settings, settingsQuery(locale));
-	const [footerData] = useLiveQuery(footer, footerQuery(locale));
+	const [pageData] = useLiveQuery(page, pageQuery(page?.uid), { locale });
+	const [headerData] = useLiveQuery(header, headerQuery, { locale });
+	const [settingsData] = useLiveQuery(settings, settingsQuery, { locale });
+	const [footerData] = useLiveQuery(footer, footerQuery, { locale });
 
 	return (
 		<>
-			<Header header={headerData} settings={settingsData} />
+			{headerData && settingsData && (
+				<Header header={headerData} settings={settingsData} />
+			)}
 
-			<RenderPageTypes types={pageData.body} />
+			{pageData?.body && <RenderPageTypes types={pageData.body} />}
 
-			<Footer footer={footerData} />
+			{footerData && <Footer footer={footerData} />}
 
 			<div className="fixed bottom-4 right-4 z-[100]">
 				<a
