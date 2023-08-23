@@ -12,7 +12,7 @@ const LinkWithImage = ({ data }) => {
 
 					<Link
 						href={link.url}
-						className="py-5 px-10 inline-block text-white bg-pink-500 font-bold rounded-[2rem] mt-6 tracking-[.05em]"
+						className="py-5 px-10 inline-block text-white bg-pink-500 font-bold rounded-[2rem] mt-6 tracking-[.05em] text-center"
 					>
 						{link.text}
 					</Link>
