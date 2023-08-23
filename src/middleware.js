@@ -6,6 +6,15 @@ const locales = supportedLanguages.map((lang) => lang.id);
 
 export function middleware(request) {
 	const pathname = request.nextUrl.pathname;
+
+	if (pathname.startsWith("/admin")) {
+		return;
+	}
+
+	if (pathname.includes("/admin")) {
+		return NextResponse.redirect(new URL("/admin", request.url));
+	}
+
 	const pathnameIsMissingLocale = locales.every(
 		(locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
 	);

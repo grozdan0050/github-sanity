@@ -1,6 +1,6 @@
-import "./globals.css";
+import "./[lang]/globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { PreloadResources } from "./preload-resources";
+import { PreloadResources } from "./[lang]/preload-resources";
 
 export const metadata = {
 	title: "Create Next App",
