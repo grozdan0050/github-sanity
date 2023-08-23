@@ -34,9 +34,10 @@ const Footer = ({ footer }) => {
 
 					<ul className="flex flex-wrap gap-8 font-semibold">
 						{footer.navigation.map((item, index) => {
-							const { _key, link } = item;
-
-							const { url, text } = link;
+							const {
+								_key,
+								link: { url, text },
+							} = item;
 
 							return (
 								<li key={_key + index}>
