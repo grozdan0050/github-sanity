@@ -30,11 +30,6 @@ export default defineType({
 					scheme: ["http", "https"],
 				}),
 		}),
-		// defineField({
-		// 	name: "test",
-		// 	title: "Test",
-		// 	type: "file",
-		// }), // TODO find a way to upload svg with script for animation
 		defineField({
 			name: "image",
 			title: "Image",
