@@ -1,7 +1,7 @@
-import Hero from "@/app/_components/hero/Hero";
-import List from "@/app/_components/list/List";
 import Base from "./base/Base";
+import Hero from "./hero/Hero";
 import Link from "./link/Link";
+import List from "./list/List";
 
 const RenderPageTypes = ({ types, index }) => {
 	const getComponent = (type) => {
@@ -32,7 +32,7 @@ const RenderPageTypes = ({ types, index }) => {
 		}
 	};
 
-	return <main>{types.map((type, index) => getComponent(type, index))}</main>;
+	return <main>{types?.map((type, index) => getComponent(type, index))}</main>;
 };
 
 export default RenderPageTypes;

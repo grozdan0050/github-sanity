@@ -1,5 +1,5 @@
-import Accordion from "@/app/_components/accordion/Accordion";
-import AccordionItem from "@/app/_components/accordion/AccordionItem";
+import Accordion from "../../accordion/Accordion";
+import AccordionItem from "../../accordion/AccordionItem";
 
 const ListCollapsible = ({ data }) => {
 	const { items, itemsBackgroundColor } = data;

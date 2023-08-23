@@ -1,17 +1,16 @@
-import Footer from "@/app/_components/Footer";
-import Header from "@/app/_components/Header";
-import RenderPageTypes from "@/app/_components/RenderPageTypes";
 import { draftMode } from "next/headers";
-import getFooter from "../../sanity/getters/getFooter";
-import getHeader from "../../sanity/getters/getHeader";
-import getPageByUid from "../../sanity/getters/getPageByUid";
-import getSettings from "../../sanity/getters/getSettings";
+import getFooter from "../../../sanity/getters/getFooter";
+import getHeader from "../../../sanity/getters/getHeader";
+import getPageByUid from "../../../sanity/getters/getPageByUid";
+import getSettings from "../../../sanity/getters/getSettings";
+import Footer from "./_components/Footer";
+import Header from "./_components/Header";
 import PreviewPage from "./_components/PreviewPage";
 import PreviewProvider from "./_components/PreviewProvider";
-import getLocale from "@/helpers/getLocale";
+import RenderPageTypes from "./_components/RenderPageTypes";
 
-export async function generateMetadata() {
-	const locale = getLocale();
+export async function generateMetadata({ params }) {
+	const locale = params.lang;
 
 	const title = (await getPageByUid(undefined, "home", locale)).title;
 
@@ -20,8 +19,8 @@ export async function generateMetadata() {
 	};
 }
 
-export default async function Home() {
-	const locale = getLocale();
+export default async function Home({ params }) {
+	const locale = params.lang;
 
 	const preview = draftMode().isEnabled
 		? { token: process.env.SANITY_READ_TOKEN }
@@ -48,6 +47,7 @@ export default async function Home() {
 						header={header}
 						settings={settings}
 						footer={footer}
+						locale={locale}
 					/>
 				</PreviewProvider>
 			</div>

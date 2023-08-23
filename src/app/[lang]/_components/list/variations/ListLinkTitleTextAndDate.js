@@ -1,13 +1,13 @@
 "use client";
 
-import Paginator from "@/app/_components/paginator/Paginator";
-import formatDate from "@/helpers/formatDate";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { redirect, useParams, useSearchParams } from "next/navigation";
+import Paginator from "../../paginator/Paginator";
+import formatDate from "@/app/[lang]/helpers/formatDate";
 
 const ListLinkTitleTextAndDate = ({ data }) => {
 	const { itemsBackgroundColor, items } = data;

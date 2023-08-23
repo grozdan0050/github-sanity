@@ -1,5 +1,5 @@
 import { PortableText } from "@portabletext/react";
-import SanityNextImage from "@/app/_components/SanityNextImage";
+import SanityNextImage from "../../SanityNextImage";
 
 const DefaultHero = ({ data }) => {
 	const { title, body, image } = data;

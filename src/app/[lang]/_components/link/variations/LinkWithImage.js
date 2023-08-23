@@ -1,5 +1,5 @@
 import Link from "next/link";
-import SanityNextImage from "@/app/_components/SanityNextImage";
+import SanityNextImage from "../../SanityNextImage";
 
 const LinkWithImage = ({ data }) => {
 	const { title, image, link } = data;

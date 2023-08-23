@@ -1,8 +1,8 @@
-import Accordion from "@/app/_components/accordion/Accordion";
-import AccordionItem from "@/app/_components/accordion/AccordionItem";
 import { PortableText } from "@portabletext/react";
-import SanityNextImage from "@/app/_components/SanityNextImage";
 import Link from "next/link";
+import Accordion from "../../accordion/Accordion";
+import AccordionItem from "../../accordion/AccordionItem";
+import SanityNextImage from "../../SanityNextImage";
 
 const ListCollapsibleWithTitleTextAndImage = ({ data }) => {
 	const { title, body, items, itemsBackgroundColor, link, image } = data;

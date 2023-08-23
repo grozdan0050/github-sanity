@@ -1,6 +1,6 @@
-import SanityNextImage from "@/app/_components/SanityNextImage";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
+import SanityNextImage from "../../SanityNextImage";
 
 const AnimatedHero = ({ data }) => {
 	const { title, body, link, image } = data;

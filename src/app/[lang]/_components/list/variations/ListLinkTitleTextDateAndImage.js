@@ -1,9 +1,9 @@
-import formatDate from "@/helpers/formatDate";
+import formatDate from "@/app/[lang]/helpers/formatDate";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PortableText } from "@portabletext/react";
-import SanityNextImage from "@/app/_components/SanityNextImage";
 import Link from "next/link";
+import SanityNextImage from "../../SanityNextImage";
 
 const ListLinkTitleTextDateAndImage = ({ data }) => {
 	const { title, items, link, image } = data;

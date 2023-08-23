@@ -1,19 +1,18 @@
-import Footer from "@/app/_components/Footer";
-import Header from "@/app/_components/Header";
-import getFooter from "../../../sanity/getters/getFooter";
-import getHeader from "../../../sanity/getters/getHeader";
-import getPageByUid from "../../../sanity/getters/getPageByUid";
-import getSettings from "../../../sanity/getters/getSettings";
-import RenderPageTypes from "@/app/_components/RenderPageTypes";
 import { draftMode } from "next/headers";
-import PreviewProvider from "../_components/PreviewProvider";
+import getFooter from "../../../../sanity/getters/getFooter";
+import getHeader from "../../../../sanity/getters/getHeader";
+import getPageByUid from "../../../../sanity/getters/getPageByUid";
+import getSettings from "../../../../sanity/getters/getSettings";
+import Footer from "../_components/Footer";
+import Header from "../_components/Header";
 import PreviewPage from "../_components/PreviewPage";
-import getLocale from "@/helpers/getLocale";
+import PreviewProvider from "../_components/PreviewProvider";
+import RenderPageTypes from "../_components/RenderPageTypes";
 
 export async function generateMetadata({ params }) {
-	const locale = getLocale();
+	const locale = params.lang;
 
-	const title = (await getPageByUid(undefined, params.uid, locale)).title;
+	const title = (await getPageByUid(undefined, params.uid, locale))?.title;
 
 	return {
 		title: title + " | Aankoopclaim",
@@ -21,7 +20,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Page({ params }) {
-	const locale = getLocale();
+	const locale = params.lang;
 
 	const preview = draftMode().isEnabled
 		? { token: process.env.SANITY_READ_TOKEN }
@@ -32,7 +31,7 @@ export default async function Page({ params }) {
 	const settings = await getSettings(preview, locale);
 	const footer = await getFooter(preview, locale);
 
-	const headerAndHeroBackgroundColor = page.body[0].backgroundColor;
+	const headerAndHeroBackgroundColor = page?.body[0].backgroundColor;
 
 	if (preview && preview.token) {
 		return (
@@ -48,6 +47,7 @@ export default async function Page({ params }) {
 						header={header}
 						settings={settings}
 						footer={footer}
+						locale={locale}
 					/>
 				</PreviewProvider>
 			</div>
@@ -63,7 +63,7 @@ export default async function Page({ params }) {
 		>
 			<Header header={header} settings={settings} />
 
-			<RenderPageTypes types={page.body} />
+			<RenderPageTypes types={page?.body} />
 
 			<Footer footer={footer} />
 		</div>

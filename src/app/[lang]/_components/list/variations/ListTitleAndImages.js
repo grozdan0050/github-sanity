@@ -1,4 +1,4 @@
-import SanityNextImage from "@/app/_components/SanityNextImage";
+import SanityNextImage from "../../SanityNextImage";
 
 const ListTitleAndImages = ({ data }) => {
 	const { title, items } = data;

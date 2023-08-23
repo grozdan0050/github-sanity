@@ -1,5 +1,5 @@
-import SanityNextImage from "@/app/_components/SanityNextImage";
 import { PortableText } from "@portabletext/react";
+import SanityNextImage from "../../SanityNextImage";
 
 const ListTextWithTitleTextAndImage = ({ data }) => {
 	const { image, title, body, items, badge } = data;
