@@ -3,9 +3,18 @@ import Negotiator from "negotiator";
 import { cookies, headers as getHeaders } from "next/headers";
 import supportedLanguages from "../../../../supportedLanguages";
 
+const getCookie = (cookie) => {
+	if (cookie) {
+		return cookie?.get("NEXT_LOCALE")?.value;
+	}
+
+	return cookies()?.get("NEXT_LOCALE")?.value;
+};
+
 const getLocale = (cookie, header) => {
 	const locales = supportedLanguages.map((language) => language.id);
-	const locale = cookie ?? cookies()?.get("NEXT_LOCALE")?.value;
+
+	const locale = getCookie(cookie);
 
 	if (locale && locales.includes(locale)) {
 		return locale;

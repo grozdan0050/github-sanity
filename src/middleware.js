@@ -19,7 +19,7 @@ export function middleware(request) {
 		(locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
 	);
 
-	const cookie = request.cookies.get("NEXT_LOCALE")?.value;
+	const cookie = request.cookies;
 	const header = request.headers.get("accept-language");
 
 	const locale = getLocale(cookie, header);
