@@ -3,7 +3,11 @@ import ListImageTextAndTitleItem from "./ListImageTextAndTitleItem";
 import ListImageTextAndTitleItemReverse from "./ListImageTextAndTitleItemReverse";
 
 const ListImageTextAndTitle = ({ data }) => {
-	const { title, items, link } = data;
+	const {
+		title,
+		items,
+		link: { url, text },
+	} = data;
 
 	return (
 		<div className="pt-10 pb-20">
@@ -25,10 +29,10 @@ const ListImageTextAndTitle = ({ data }) => {
 
 			<div className="text-center mt-16">
 				<Link
-					href={link.url}
+					href={url}
 					className="inline-block px-10 py-4 rounded-full bg-pink-500 text-white font-semibold tracking-wide"
 				>
-					{link.text}
+					{text}
 				</Link>
 			</div>
 		</div>
