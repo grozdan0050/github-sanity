@@ -5,7 +5,7 @@ import supportedLanguages from "../../../../supportedLanguages";
 
 const getLocale = (cookie, header) => {
 	const locales = supportedLanguages.map((language) => language.id);
-	const locale = cookie ?? cookies().get("NEXT_LOCALE")?.value;
+	const locale = cookie ?? cookies()?.get("NEXT_LOCALE")?.value;
 
 	if (locale && locales.includes(locale)) {
 		return locale;
