@@ -47,7 +47,7 @@ const Footer = ({ footer }) => {
 								} = item;
 
 								return (
-									_key &&
+
 									url &&
 									text && (
 										<li key={_key + index}>
