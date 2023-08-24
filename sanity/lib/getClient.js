@@ -1,5 +1,4 @@
 import { createClient } from "next-sanity";
-import { cache } from "react";
 
 export const getClient = (preview) => {
 	const client = createClient({
@@ -23,10 +22,4 @@ export const getClient = (preview) => {
 	}
 
 	return client;
-};
-
-export const getChachedClient = (preview) => {
-	const client = getClient(preview);
-
-	return cache(client.fetch.bind(client));
 };
