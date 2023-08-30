@@ -3,7 +3,7 @@ import { defineField, defineType } from "sanity";
 export default defineType({
 	name: "listCollapsibleItem",
 	title: "List Collapsible Item",
-	type: "document",
+	type: "object",
 	fields: [
 		defineField({
 			name: "title",

@@ -3,7 +3,7 @@ import { defineField, defineType } from "sanity";
 export default defineType({
 	name: "listInline",
 	title: "List Inline",
-	type: "document",
+	type: "object",
 	fields: [
 		defineField({
 			name: "items",

@@ -3,7 +3,7 @@ import { defineField, defineType } from "sanity";
 export default defineType({
 	name: "listTextWithTitleTextAndImage",
 	title: "List Text With Title Text And Image",
-	type: "document",
+	type: "object",
 	fields: [
 		defineField({
 			name: "title",
