@@ -11,4 +11,9 @@ export default defineType({
 			type: "richText",
 		}),
 	],
+	preview: {
+		select: {
+			title: "body.en.0.children.0.text",
+		},
+	},
 });

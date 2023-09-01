@@ -16,4 +16,29 @@ export default defineType({
 			type: "color",
 		}),
 	],
+	preview: {
+		select: {
+			title: "body.en",
+		},
+		prepare({ title }) {
+			const numberOfChildren = title[0].children.length;
+
+			if (numberOfChildren > 1) {
+				return {
+					title: title[0].children[0].text,
+					subtitle: title[0].children[1].text,
+				};
+			}
+
+			if (numberOfChildren) {
+				return {
+					title: title[0].children[0].text,
+				};
+			}
+
+			return {
+				title: "Element is empty!",
+			};
+		},
+	},
 });

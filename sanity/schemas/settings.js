@@ -21,4 +21,9 @@ export default defineType({
 				}),
 		}),
 	],
+	preview: {
+		select: {
+			title: "linkText.en",
+		},
+	},
 });

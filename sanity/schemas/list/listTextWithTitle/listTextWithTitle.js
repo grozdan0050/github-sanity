@@ -17,4 +17,10 @@ export default defineType({
 			type: "color",
 		}),
 	],
+	preview: {
+		select: {
+			title: "items.0.title.en",
+			subtitle: "items.0.body.en.0.children.0.text",
+		},
+	},
 });

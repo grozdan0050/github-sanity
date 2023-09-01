@@ -44,4 +44,21 @@ export default defineType({
 			type: "color",
 		}),
 	],
+	preview: {
+		select: {
+			title1: "navigation.0.linkText.en",
+			title2: "navigation.1.linkText.en",
+			title3: "navigation.2.linkText.en",
+			title4: "navigation.3.linkText.en",
+			subtitle: "copyright.en",
+			media: "logo",
+		},
+		prepare({ title1, title2, title3, title4, subtitle, media }) {
+			const title = [title1, title2, title3, title4]
+				.filter((i) => i)
+				.join(", ");
+
+			return { title, subtitle, media };
+		},
+	},
 });

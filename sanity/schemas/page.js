@@ -38,4 +38,16 @@ export default defineType({
 			],
 		}),
 	],
+	preview: {
+		select: {
+			title: "uid",
+			subtitle: "title.en",
+		},
+		prepare({ title, subtitle }) {
+			return {
+				title: title.charAt(0).toUpperCase() + title.slice(1),
+				subtitle,
+			};
+		},
+	},
 });

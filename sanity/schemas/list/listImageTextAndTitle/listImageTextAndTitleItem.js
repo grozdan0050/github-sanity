@@ -38,4 +38,24 @@ export default defineType({
 			type: "color",
 		}),
 	],
+	preview: {
+		select: {
+			title: "title.en",
+			subtitle: "body.en.0.children",
+		},
+		prepare({ title, subtitle }) {
+			const subtitleLength = subtitle.length;
+
+			if (subtitleLength) {
+				return {
+					title,
+					subtitle: subtitle[0].text,
+				};
+			}
+
+			return {
+				title,
+			};
+		},
+	},
 });

@@ -48,4 +48,10 @@ export default defineType({
 			type: "color",
 		}),
 	],
+	preview: {
+		select: {
+			title: "title.en",
+			subtitle: "linkText.en",
+		},
+	},
 });

@@ -32,4 +32,38 @@ export default defineType({
 			type: "color",
 		}),
 	],
+	preview: {
+		select: {
+			item1: "items.0.body.en.0.children",
+			item2: "items.1.body.en.0.children",
+			item3: "items.2.body.en.0.children",
+		},
+		prepare({ item1, item2, item3 }) {
+			const items = [item1, item2, item3].map((item) => {
+				const itemLength = item.length;
+
+				if (itemLength) {
+					return item[0].text;
+				}
+			});
+
+			if (items.length > 1) {
+				const title = items.slice(0, -1).join(", ");
+				const subtitle = items.slice(-1).join(", ");
+
+				return {
+					title,
+					subtitle,
+				};
+			}
+
+			if (items.length) {
+				return {
+					title: items[0].join(", "),
+				};
+			}
+
+			return { title: "Element is empty!" };
+		},
+	},
 });

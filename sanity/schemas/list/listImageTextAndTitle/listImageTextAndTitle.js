@@ -42,4 +42,10 @@ export default defineType({
 				}),
 		}),
 	],
+	preview: {
+		select: {
+			title: "title.en",
+			subtitle: "linkText.en",
+		},
+	},
 });
