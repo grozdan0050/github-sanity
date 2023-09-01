@@ -13,11 +13,11 @@ const Header = ({ header, settings }) => {
 						{header.navigation.length > 0 && (
 							<ul className="flex items-center mr-10 gap-6 font-semibold text-lg">
 								{header.navigation.map(
-									(item, index) =>
-										item._key &&
+									(item) =>
+										item._id &&
 										item.link.url &&
 										item.link.text && (
-											<li key={item._key + index}>
+											<li key={item._id}>
 												<Link href={item.link.url}>{item.link.text}</Link>
 											</li>
 										)

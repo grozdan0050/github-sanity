@@ -29,6 +29,7 @@ import settings from "./settings";
 import localeString from "./localeTypes/localeString";
 import listTextWithTitleTextAndImageItem from "./list/listTextWithTitleTextAndImage/listTextWithTitleTextAndImageItem";
 import listItem from "./hero/listItem";
+import navigation from "./navigation";
 
 export const schemaTypes = [
 	blockContent,
@@ -62,4 +63,5 @@ export const schemaTypes = [
 	textWithTitleAndTable,
 	localeString,
 	listItem,
+	navigation,
 ];

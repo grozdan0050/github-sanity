@@ -21,7 +21,7 @@ export default defineType({
 			name: "navigation",
 			title: "Navigation",
 			type: "array",
-			of: [{ type: "link" }],
+			of: [{ type: "reference", to: { type: "navigation" } }],
 		}),
 	],
 	preview: {

@@ -40,17 +40,17 @@ const Footer = ({ footer }) => {
 
 					{footer.navigation.length > 0 && (
 						<ul className="flex flex-wrap gap-8 font-semibold">
-							{footer.navigation.map((item, index) => {
+							{footer.navigation.map((item) => {
 								const {
-									_key,
+									_id,
 									link: { url, text },
 								} = item;
 
 								return (
-									_key &&
+									_id &&
 									url &&
 									text && (
-										<li key={_key + index}>
+										<li key={_id}>
 											<Link href={url}>{text}</Link>
 										</li>
 									)

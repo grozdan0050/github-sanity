@@ -12,8 +12,8 @@ const footerQuery = groq`
         'body': body[$locale],
         'chamberOfCommerceNumber': chamberOfCommerceNumber[$locale],
         'copyright': copyright[$locale],
-        navigation[] {
-            _key,
+        navigation[]-> {
+            _id,
             _type,
             'link': {
                 'text': linkText[$locale],

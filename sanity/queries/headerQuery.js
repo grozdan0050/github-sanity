@@ -9,8 +9,8 @@ const headerQuery = groq`
             'height': logo.asset->metadata.dimensions.height,
             'alt': logo.alt[$locale],
         },
-        navigation[] {
-            _key,
+        navigation[]-> {
+            _id,
             _type,
             'link': {
                 'text': linkText[$locale],
