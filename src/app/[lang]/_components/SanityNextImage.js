@@ -8,7 +8,7 @@ const SanityNextImage = ({ data, className }) => {
 			src={url}
 			width={width}
 			height={height}
-			alt={alt}
+			alt={alt ?? ""}
 			className={className}
 		/>
 	);
