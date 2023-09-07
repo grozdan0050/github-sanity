@@ -8,12 +8,18 @@ import settingsQuery from "../../../../sanity/queries/settingsQuery";
 import footerQuery from "../../../../sanity/queries/footerQuery";
 import pageQuery from "../../../../sanity/queries/pageQuery";
 import headerQuery from "../../../../sanity/queries/headerQuery";
+import newsQuery from "../../../../sanity/queries/newsQuery";
 
-const PreviewPage = ({ page, header, settings, footer, locale }) => {
+const PreviewPage = ({ page, header, settings, footer, news, locale }) => {
 	const [pageData] = useLiveQuery(page, pageQuery(page?.uid), { locale });
 	const [headerData] = useLiveQuery(header, headerQuery, { locale });
 	const [settingsData] = useLiveQuery(settings, settingsQuery, { locale });
 	const [footerData] = useLiveQuery(footer, footerQuery, { locale });
+	const [newsData] = useLiveQuery(
+		news,
+		newsQuery(locale, page?.uid !== "home", 3),
+		{ locale }
+	);
 
 	return (
 		<>
@@ -21,7 +27,9 @@ const PreviewPage = ({ page, header, settings, footer, locale }) => {
 				<Header header={headerData} settings={settingsData} />
 			)}
 
-			{pageData?.body && <RenderPageTypes types={pageData.body} />}
+			{pageData?.body && newsData && (
+				<RenderPageTypes types={pageData.body} news={newsData} />
+			)}
 
 			{footerData && <Footer footer={footerData} />}
 

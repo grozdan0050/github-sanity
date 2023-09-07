@@ -3,8 +3,8 @@ import Hero from "./hero/Hero";
 import Link from "./link/Link";
 import List from "./list/List";
 
-const RenderPageTypes = ({ types, index }) => {
-	const getComponent = (type) => {
+const RenderPageTypes = ({ types, news }) => {
+	const getComponent = (type, index) => {
 		const { _type } = type;
 
 		switch (_type) {
@@ -15,13 +15,14 @@ const RenderPageTypes = ({ types, index }) => {
 			case "listInline":
 			case "listCollapsible":
 			case "listImageTextAndTitle":
-			case "listLinkTitleTextDateAndImage":
 			case "listCollapsibleWithTitleTextAndImage":
-			case "listLinkTitleTextAndDate":
 			case "listTextWithTitle":
 			case "listTitleAndImages":
 			case "listTextWithTitleTextAndImage":
 				return <List key={_type + index} data={type} />;
+			case "listLinkTitleTextAndDate":
+			case "listLinkTitleTextDateAndImage":
+				return <List key={_type + index} data={{ ...type, items: news }} />;
 			case "linkWithImage":
 				return <Link key={_type + index} data={type} />;
 			case "textWithTitle":
