@@ -11,4 +11,10 @@ export default defineType({
 			type: "richText",
 		}),
 	],
+	preview: {
+		select: {
+			title: "body.en.0.children.0.text",
+			subtitle: "body.en.1.children.0.text",
+		},
+	},
 });
