@@ -11,17 +11,6 @@ export default defineType({
 			type: "localeString",
 		}),
 		defineField({
-			name: "items",
-			title: "Items",
-			type: "array",
-			of: [
-				{
-					type: "reference",
-					to: { type: "listLinkTitleTextDateAndImageItem" },
-				},
-			],
-		}),
-		defineField({
 			name: "linkText",
 			title: "Link Text",
 			type: "localeString",

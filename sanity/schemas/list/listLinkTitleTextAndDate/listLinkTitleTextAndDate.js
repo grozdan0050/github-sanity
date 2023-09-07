@@ -6,15 +6,9 @@ export default defineType({
 	type: "object",
 	fields: [
 		defineField({
-			name: "items",
-			title: "Items",
-			type: "array",
-			of: [
-				{
-					type: "reference",
-					to: { type: "listLinkTitleTextAndDateItem" },
-				},
-			],
+			name: "title",
+			title: "Title",
+			type: "localeString",
 		}),
 		defineField({
 			name: "itemsBackgroundColor",
@@ -29,8 +23,7 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: "items.0.title.en",
-			subtitle: "items.0.body.en.0.children.0.text",
+			title: "title.en",
 		},
 	},
 });

@@ -95,17 +95,6 @@ const listLinkTitleTextDateAndImageQuery = groq`
         },
         'itemsBackgroundColor':itemsBackgroundColor.hex,
         'backgroundColor': backgroundColor.hex,
-        items[]->{
-            _id,
-            'title': title[$locale],
-            'body': body[$locale],
-            'backgroundColor': backgroundColor.hex,
-            'link': {
-                'text': linkText[$locale],
-                'url': linkUrl,
-            },
-            publishDate,
-        },
         'link': {
             'text': linkText[$locale],
             'url': linkUrl,
@@ -118,16 +107,6 @@ const listLinkTitleTextAndDateQuery = groq`
         _type,
         'itemsBackgroundColor': itemsBackgroundColor.hex,
         'backgroundColor': backgroundColor.hex,
-        items[]-> {
-            _id,
-            publishDate,
-            'title': title[$locale],
-            'body': body[$locale],
-            'link': {
-                'text': linkText[$locale],
-                'url': linkUrl,
-            },
-        }
     },
 `;
 

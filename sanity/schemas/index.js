@@ -17,9 +17,7 @@ import listImageTextAndTitleItem from "./list/listImageTextAndTitle/listImageTex
 import listInline from "./list/listInline/listInline";
 import listInlineItem from "./list/listInline/listInlineItem";
 import listLinkTitleTextAndDate from "./list/listLinkTitleTextAndDate/listLinkTitleTextAndDate";
-import listLinkTitleTextAndDateItem from "./list/listLinkTitleTextAndDate/listLinkTitleTextAndDateItem";
 import listLinkTitleTextDateAndImage from "./list/listLinkTitleTextDateAndImage/listLinkTitleTextDateAndImage";
-import listLinkTitleTextDateAndImageItem from "./list/listLinkTitleTextDateAndImage/listLinkTitleTextDateAndImageItem";
 import listTitleAndImages from "./list/listTitleAndImages/listTitleAndImages";
 import listTitleAndImagesItem from "./list/listTitleAndImages/listTitleAndImagesItem";
 import listTextWithTitle from "./list/listTextWithTitle/listTextWithTitle";
@@ -45,14 +43,12 @@ export const schemaTypes = [
 	listImageTextAndTitle,
 	listImageTextAndTitleItem,
 	listLinkTitleTextDateAndImage,
-	listLinkTitleTextDateAndImageItem,
 	listCollapsibleWithTitleTextAndImage,
 	header,
 	settings,
 	link,
 	footer,
 	listLinkTitleTextAndDate,
-	listLinkTitleTextAndDateItem,
 	listTextWithTitle,
 	textWithTitle,
 	heroWithForm,
