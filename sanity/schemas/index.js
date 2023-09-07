@@ -30,6 +30,7 @@ import localeString from "./localeTypes/localeString";
 import listTextWithTitleTextAndImageItem from "./list/listTextWithTitleTextAndImage/listTextWithTitleTextAndImageItem";
 import listItem from "./hero/listItem";
 import navigation from "./navigation";
+import news from "./news";
 
 export const schemaTypes = [
 	blockContent,
@@ -64,4 +65,5 @@ export const schemaTypes = [
 	localeString,
 	listItem,
 	navigation,
+	news,
 ];
