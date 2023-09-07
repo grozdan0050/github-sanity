@@ -91,7 +91,7 @@ const ListLinkTitleTextAndDate = ({ data: { itemsBackgroundColor } }) => {
 							<h4 className="mt-4 font-semibold text-xl">{item.title}</h4>
 
 							{item.body && (
-								<div className="mt-4 break-all">
+								<div className="mt-4 break-words">
 									<PortableText value={item.body} />
 								</div>
 							)}

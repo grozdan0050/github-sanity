@@ -46,7 +46,7 @@ const ListLinkTitleTextDateAndImage = ({ data }) => {
 									<h3 className="mt-4 font-semibold text-lg">{item.title}</h3>
 
 									{item.body && (
-										<div className="mt-4 break-all">
+										<div className="mt-4 break-words">
 											<PortableText value={item.body} />
 										</div>
 									)}
