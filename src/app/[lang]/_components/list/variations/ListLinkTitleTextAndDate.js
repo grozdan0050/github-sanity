@@ -8,19 +8,29 @@ import { useEffect, useRef, useState } from "react";
 import { redirect, useParams, useSearchParams } from "next/navigation";
 import Paginator from "../../paginator/Paginator";
 import formatDate from "@/app/[lang]/helpers/formatDate";
+import getNews from "../../../../../../sanity/getters/getNews";
 
-const ListLinkTitleTextAndDate = ({ data }) => {
-	const { itemsBackgroundColor, items } = data;
-
+const ListLinkTitleTextAndDate = ({ data: { itemsBackgroundColor } }) => {
 	const basePath = useParams().uid;
+	const locale = useParams().lang;
 
 	const page = useSearchParams().get("page");
 
 	const [currentPageIndex, setCurrentPageIndex] = useState(1);
 	const [shouldScroll, setShouldScroll] = useState(false);
+	const [news, setNews] = useState();
+
+	useEffect(() => {
+		const fetchNews = async () => {
+			setNews(await getNews(null, locale, true));
+		};
+
+		fetchNews();
+	}, [locale]);
 
 	const NUMBER_OF_ITEMS_PER_PAGE = 9;
-	const numberOfPages = Math.ceil(items.length / NUMBER_OF_ITEMS_PER_PAGE);
+	const numberOfPages =
+		news?.length && Math.ceil(news.length / NUMBER_OF_ITEMS_PER_PAGE);
 
 	const firstPageItemIndex = (currentPageIndex - 1) * NUMBER_OF_ITEMS_PER_PAGE;
 	const lastPageItemIndex = firstPageItemIndex + NUMBER_OF_ITEMS_PER_PAGE;
@@ -51,10 +61,10 @@ const ListLinkTitleTextAndDate = ({ data }) => {
 
 	const getPageItems = () => {
 		if (numberOfPages === 1) {
-			return items;
+			return news;
 		}
 
-		return items.slice(firstPageItemIndex, lastPageItemIndex);
+		return news?.length && news.slice(firstPageItemIndex, lastPageItemIndex);
 	};
 
 	const scrollToTopOfNewsList = () => {
@@ -65,37 +75,41 @@ const ListLinkTitleTextAndDate = ({ data }) => {
 
 	return (
 		<div className="shell-md py-28" ref={newsListRef}>
-			<ul
-				className="grid grid-cols-3 gap-4"
-				style={{ "--items-bg-color": itemsBackgroundColor }}
-			>
-				{getPageItems().map((item, index) => (
-					<li
-						key={item._id + index}
-						style={{ "--item-bg-color": item.backgroundColor }}
-						className="bg-[var(--items-bg-color)] rounded-3xl p-10"
-					>
-						<span>{formatDate(item.publishDate)}</span>
-
-						<h4 className="mt-4 font-semibold text-xl">{item.title}</h4>
-
-						{item.body && (
-							<div className="mt-4">
-								<PortableText value={item.body} />
-							</div>
-						)}
-
-						<Link
-							href={item.link.url}
-							className="flex gap-4 items-center mt-4 text-pink-500"
+			{news && (
+				<ul
+					className="grid grid-cols-3 gap-4"
+					style={{ "--news-bg-color": itemsBackgroundColor }}
+				>
+					{getPageItems().map((item, index) => (
+						<li
+							key={item._id + index}
+							style={{ "--item-bg-color": item.backgroundColor }}
+							className="bg-[var(--news-bg-color)] rounded-3xl p-10"
 						>
-							<span className="font-semibold underline">{item.link.text}</span>
+							<span>{formatDate(item.publishDate)}</span>
 
-							<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-						</Link>
-					</li>
-				))}
-			</ul>
+							<h4 className="mt-4 font-semibold text-xl">{item.title}</h4>
+
+							{item.body && (
+								<div className="mt-4 break-all">
+									<PortableText value={item.body} />
+								</div>
+							)}
+
+							<Link
+								href={item.link.url}
+								className="flex gap-4 items-center mt-4 text-pink-500"
+							>
+								<span className="font-semibold underline">
+									{item.link.text}
+								</span>
+
+								<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+							</Link>
+						</li>
+					))}
+				</ul>
+			)}
 
 			{isPaginatorVisible && (
 				<Paginator
