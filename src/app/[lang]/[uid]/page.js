@@ -1,6 +1,7 @@
 import { draftMode } from "next/headers";
 import getFooter from "../../../../sanity/getters/getFooter";
 import getHeader from "../../../../sanity/getters/getHeader";
+import getNews from "../../../../sanity/getters/getNews";
 import getPageByUid from "../../../../sanity/getters/getPageByUid";
 import getSettings from "../../../../sanity/getters/getSettings";
 import Footer from "../_components/Footer";
@@ -30,6 +31,7 @@ export default async function Page({ params }) {
 	const header = await getHeader(preview, locale);
 	const settings = await getSettings(preview, locale);
 	const footer = await getFooter(preview, locale);
+	const news = await getNews(preview, locale, true);
 
 	const headerAndHeroBackgroundColor = page?.body[0].backgroundColor;
 
@@ -47,6 +49,7 @@ export default async function Page({ params }) {
 						header={header}
 						settings={settings}
 						footer={footer}
+						news={news}
 						locale={locale}
 					/>
 				</PreviewProvider>
@@ -63,7 +66,7 @@ export default async function Page({ params }) {
 		>
 			<Header header={header} settings={settings} />
 
-			<RenderPageTypes types={page?.body} />
+			<RenderPageTypes types={page?.body} news={news} />
 
 			<Footer footer={footer} />
 		</div>
