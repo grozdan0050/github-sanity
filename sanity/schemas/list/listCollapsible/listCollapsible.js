@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { defaultLocaleId } from "../../../../supportedLanguages";
 
 export default defineType({
 	name: "listCollapsible",
@@ -24,12 +25,12 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title1: "items.0.title.en",
-			title2: "items.1.title.en",
-			title3: "items.2.title.en",
-			subtitle1: "items.0.body.en.0.children.0.text",
-			subtitle2: "items.1.body.en.0.children.0.text",
-			subtitle3: "items.2.body.en.0.children.0.text",
+			title1: `items.0.title.${defaultLocaleId}`,
+			title2: `items.1.title.${defaultLocaleId}`,
+			title3: `items.2.title.${defaultLocaleId}`,
+			subtitle1: `items.0.body.${defaultLocaleId}.0.children.0.text`,
+			subtitle2: `items.1.body.${defaultLocaleId}.0.children.0.text`,
+			subtitle3: `items.2.body.${defaultLocaleId}.0.children.0.text`,
 		},
 		prepare(selected) {
 			const { title1, title2, title3 } = selected;

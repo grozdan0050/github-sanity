@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { defaultLocaleId } from "../../../../supportedLanguages";
 
 export default defineType({
 	name: "listImageTextAndTitleItem",
@@ -40,8 +41,8 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: "title.en",
-			subtitle: "body.en.0.children",
+			title: `title.${defaultLocaleId}`,
+			subtitle: `body.${defaultLocaleId}.0.children`,
 		},
 		prepare({ title, subtitle }) {
 			const subtitleLength = subtitle.length;

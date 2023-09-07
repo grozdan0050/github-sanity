@@ -1,5 +1,6 @@
 import News from "@/app/[lang]/_components/News";
 import { defineField, defineType } from "sanity";
+import { defaultLocaleId } from "../../supportedLanguages";
 
 export default defineType({
 	name: "page",
@@ -66,7 +67,7 @@ export default defineType({
 	preview: {
 		select: {
 			title: "uid",
-			subtitle: "title.en",
+			subtitle: `title.${defaultLocaleId}`,
 		},
 		prepare({ title, subtitle }) {
 			return {

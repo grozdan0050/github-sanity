@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { defaultLocaleId } from "../../../supportedLanguages";
 
 export default defineType({
 	name: "defaultHero",
@@ -35,8 +36,8 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: "title.en",
-			subtitle: "body.en.0.children.0.text",
+			title: `title.${defaultLocaleId}`,
+			subtitle: `body.${defaultLocaleId}.0.children.0.text`,
 		},
 	},
 });

@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { defaultLocaleId } from "../../../../supportedLanguages";
 
 export default defineType({
 	name: "listTitleAndImages",
@@ -24,7 +25,7 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: "title.en",
+			title: `title.${defaultLocaleId}`,
 		},
 	},
 });

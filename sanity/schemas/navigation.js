@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { defaultLocaleId } from "../../supportedLanguages";
 
 export default defineType({
 	name: "navigation",
@@ -24,7 +25,7 @@ export default defineType({
 
 	preview: {
 		select: {
-			title: "linkText.en",
+			title: `linkText.${defaultLocaleId}`,
 		},
 	},
 });

@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { defaultLocaleId } from "../../../../supportedLanguages";
 
 export default defineType({
 	name: "listInline",
@@ -34,9 +35,9 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			item1: "items.0.body.en.0.children",
-			item2: "items.1.body.en.0.children",
-			item3: "items.2.body.en.0.children",
+			item1: `items.0.body.${defaultLocaleId}.0.children`,
+			item2: `items.1.body.${defaultLocaleId}.0.children`,
+			item3: `items.2.body.${defaultLocaleId}.0.children`,
 		},
 		prepare({ item1, item2, item3 }) {
 			const items = [item1, item2, item3].map((item) => {

@@ -21,8 +21,14 @@ const RenderPageTypes = ({ types, news }) => {
 			case "listTextWithTitleTextAndImage":
 				return <List key={_type + index} data={type} />;
 			case "listLinkTitleTextAndDate":
-			case "listLinkTitleTextDateAndImage":
 				return <List key={_type + index} data={{ ...type, items: news }} />;
+			case "listLinkTitleTextDateAndImage":
+				return (
+					<List
+						key={_type + index}
+						data={{ ...type, items: news.slice(0, 3) }}
+					/>
+				);
 			case "linkWithImage":
 				return <Link key={_type + index} data={type} />;
 			case "textWithTitle":

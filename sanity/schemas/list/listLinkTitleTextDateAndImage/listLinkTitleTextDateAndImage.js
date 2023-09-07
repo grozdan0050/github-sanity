@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { defaultLocaleId } from "../../../../supportedLanguages";
 
 export default defineType({
 	name: "listLinkTitleTextDateAndImage",
@@ -50,8 +51,8 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: "title.en",
-			subtitle: "linkText.en",
+			title: `title.${defaultLocaleId}`,
+			subtitle: `linkText.${defaultLocaleId}`,
 		},
 	},
 });

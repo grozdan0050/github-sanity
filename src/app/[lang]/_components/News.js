@@ -8,7 +8,8 @@ const News = ({ isAllNews, numberOfNews }) => {
 
 	useEffect(() => {
 		const fetchNews = async () => {
-			setNews(await getNews(null, false, isAllNews, numberOfNews));
+			const newsData = await getNews(undefined, false);
+			setNews(isAllNews ? newsData : newsData.slice(0, numberOfNews));
 		};
 
 		fetchNews();

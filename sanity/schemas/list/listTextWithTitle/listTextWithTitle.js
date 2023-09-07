@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { defaultLocaleId } from "../../../../supportedLanguages";
 
 export default defineType({
 	name: "listTextWithTitle",
@@ -19,8 +20,8 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: "items.0.title.en",
-			subtitle: "items.0.body.en.0.children.0.text",
+			title: `items.0.title.${defaultLocaleId}`,
+			subtitle: `items.0.body.${defaultLocaleId}.0.children.0.text`,
 		},
 	},
 });

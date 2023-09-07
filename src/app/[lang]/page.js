@@ -31,7 +31,7 @@ export default async function Home({ params }) {
 	const header = await getHeader(preview, locale);
 	const settings = await getSettings(preview, locale);
 	const footer = await getFooter(preview, locale);
-	const news = await getNews(preview, locale, false, 3);
+	const news = await getNews(preview, locale);
 
 	const headerAndHeroBackgroundColor = page.body[0].backgroundColor;
 

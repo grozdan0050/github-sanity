@@ -15,11 +15,7 @@ const PreviewPage = ({ page, header, settings, footer, news, locale }) => {
 	const [headerData] = useLiveQuery(header, headerQuery, { locale });
 	const [settingsData] = useLiveQuery(settings, settingsQuery, { locale });
 	const [footerData] = useLiveQuery(footer, footerQuery, { locale });
-	const [newsData] = useLiveQuery(
-		news,
-		newsQuery(locale, page?.uid !== "home", 3),
-		{ locale }
-	);
+	const [newsData] = useLiveQuery(news, newsQuery(locale), { locale });
 
 	return (
 		<>

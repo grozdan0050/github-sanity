@@ -1,4 +1,5 @@
 import { defineType, defineField } from "sanity";
+import { defaultLocaleId } from "../../supportedLanguages";
 
 export default defineType({
 	name: "header",
@@ -26,10 +27,10 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title1: "navigation.0.linkText.en",
-			title2: "navigation.1.linkText.en",
-			title3: "navigation.2.linkText.en",
-			title4: "navigation.3.linkText.en",
+			title1: `navigation.0.linkText.${defaultLocaleId}`,
+			title2: `navigation.1.linkText.${defaultLocaleId}`,
+			title3: `navigation.2.linkText.${defaultLocaleId}`,
+			title4: `navigation.3.linkText.${defaultLocaleId}`,
 		},
 		prepare({ title1, title2, title3, title4 }) {
 			const title = [title1, title2, title3, title4]

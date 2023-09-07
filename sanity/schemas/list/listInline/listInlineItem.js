@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { defaultLocaleId } from "../../../../supportedLanguages";
 
 export default defineType({
 	name: "listInlineItem",
@@ -18,7 +19,7 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: "body.en",
+			title: `body.${defaultLocaleId}`,
 		},
 		prepare({ title }) {
 			const numberOfChildren = title[0].children.length;

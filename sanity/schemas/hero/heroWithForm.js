@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { defaultLocaleId } from "../../../supportedLanguages";
 
 export default defineType({
 	name: "heroWithForm",
@@ -70,8 +71,8 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: "title.en",
-			subtitle: "formButtonText.en",
+			title: `title.${defaultLocaleId}`,
+			subtitle: `formButtonText.${defaultLocaleId}`,
 		},
 	},
 });

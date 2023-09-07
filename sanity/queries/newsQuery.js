@@ -1,9 +1,7 @@
 const { groq } = require("next-sanity");
 
-const newsQuery = (getSpecificLanguage, isAllNews, numberOfNews) => groq`
-*[_type == 'news'] | order(publishDate desc)${
-	isAllNews ? "" : `[0...${numberOfNews}]`
-} {
+const newsQuery = (getSpecificLanguage) => groq`
+*[_type == 'news'] | order(publishDate desc) {
     _type,
     _id,
     ${getSpecificLanguage ? "'title': title[$locale]" : "title"},
