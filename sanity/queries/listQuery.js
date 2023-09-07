@@ -93,6 +93,7 @@ const listLinkTitleTextDateAndImageQuery = groq`
             'height': image.asset->metadata.dimensions.height,
             'alt': image.alt[$locale],
         },
+        'itemsBackgroundColor':itemsBackgroundColor.hex,
         'backgroundColor': backgroundColor.hex,
         items[]->{
             _id,
@@ -115,7 +116,7 @@ const listLinkTitleTextDateAndImageQuery = groq`
 const listLinkTitleTextAndDateQuery = groq`  
     _type == 'listLinkTitleTextAndDate' => {
         _type,
-        'itemsBackgroundColor':itemsBackgroundColor.hex,
+        'itemsBackgroundColor': itemsBackgroundColor.hex,
         'backgroundColor': backgroundColor.hex,
         items[]-> {
             _id,

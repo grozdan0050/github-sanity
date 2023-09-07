@@ -53,6 +53,11 @@ export default defineType({
 			title: "Background Color",
 			type: "color",
 		}),
+		defineField({
+			name: "itemsBackgroundColor",
+			title: "Items Background Color",
+			type: "color",
+		}),
 	],
 	preview: {
 		select: {
