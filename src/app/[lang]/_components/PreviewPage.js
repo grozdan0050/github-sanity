@@ -27,7 +27,7 @@ const PreviewPage = ({ page, header, settings, footer, locale }) => {
 
 			<div className="fixed bottom-4 right-4 z-[100]">
 				<a
-					href="/api/exit-preview"
+					href={`/${locale}/api/exit-preview`}
 					className="px-8 py-6 bg-sky-400 inline-block font-semibold text-white text-xl"
 				>
 					Exit Preview
