@@ -1,3 +1,4 @@
+import News from "@/app/[lang]/_components/News";
 import { defineField, defineType } from "sanity";
 
 export default defineType({
@@ -36,6 +37,30 @@ export default defineType({
 				{ type: "listTextWithTitleTextAndImage" },
 				{ type: "textWithTitleAndTable" },
 			],
+		}),
+		defineField({
+			name: "news",
+			title: "News",
+			type: "array",
+			of: [{ type: "reference", to: { type: "news" } }],
+			components: {
+				input: () => News({ isAllNews: true }),
+			},
+			hidden: ({ parent: { uid } }) => {
+				return uid !== "press";
+			},
+		}),
+		defineField({
+			name: "latestNews",
+			title: "Latest News",
+			type: "array",
+			of: [{ type: "reference", to: { type: "news" } }],
+			components: {
+				input: () => News({ isAllNews: false, numberOfNews: 3 }),
+			},
+			hidden: ({ parent: { uid } }) => {
+				return uid !== "home";
+			},
 		}),
 	],
 	preview: {
