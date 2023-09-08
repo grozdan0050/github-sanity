@@ -27,7 +27,7 @@ export async function GET(req, res) {
 	console.log(algoliaResponse);
 
 	if (res?.status) {
-		res.status(200);
+		res.end();
 	}
 
 	redirect(`/`);
