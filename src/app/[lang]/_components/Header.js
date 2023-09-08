@@ -7,7 +7,7 @@ const Header = ({ header, settings }) => {
 		<header className="bg-[var(--bg-color)] sticky left-0 top-0 z-10">
 			<div className="shell">
 				<div className="p-8 flex items-center justify-between">
-					<SanityNextImage data={header.logo} />
+					{header.logo && <SanityNextImage data={header.logo} />}
 
 					<nav className="flex items-center">
 						{header.navigation.length > 0 && (

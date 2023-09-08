@@ -65,51 +65,63 @@ const ListLinkTitleTextAndDate = ({ data }) => {
 	};
 
 	return (
-		<div className="shell-md py-28" ref={newsListRef}>
-			{items && (
+		items && (
+			<div className="shell-md py-28" ref={newsListRef}>
 				<ul
 					className="grid grid-cols-3 gap-4"
 					style={{ "--items-bg-color": itemsBackgroundColor }}
 				>
-					{getPageItems().map((item, index) => (
-						<li
-							key={item._id + index}
-							style={{ "--item-bg-color": item.backgroundColor }}
-							className="bg-[var(--items-bg-color)] rounded-3xl p-10"
-						>
-							<span>{formatDate(item.publishDate)}</span>
+					{getPageItems().map((item, index) => {
+						const { _id, backgroundColor, publishDate, title, body, link } =
+							item;
 
-							<h4 className="mt-4 font-semibold text-xl">{item.title}</h4>
+						return (
+							(publishDate || title || body || (link.text && link.url)) &&
+							_id && (
+								<li
+									key={_id + index}
+									style={{ "--item-bg-color": backgroundColor }}
+									className="bg-[var(--items-bg-color)] rounded-3xl p-10"
+								>
+									{publishDate && <span>{formatDate(publishDate)}</span>}
 
-							{item.body && (
-								<div className="mt-4 break-words">
-									<PortableText value={item.body} />
-								</div>
-							)}
+									{title && (
+										<h4 className="mt-4 font-semibold text-xl">{title}</h4>
+									)}
 
-							<Link
-								href={item.link.url}
-								className="flex gap-4 items-center mt-4 text-pink-500"
-							>
-								<span className="font-semibold underline">
-									{item.link.text}
-								</span>
+									{body && (
+										<div className="mt-4 break-words">
+											<PortableText value={body} />
+										</div>
+									)}
 
-								<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-							</Link>
-						</li>
-					))}
+									{link.text && link.url && (
+										<Link
+											href={link.url}
+											className="flex gap-4 items-center mt-4 text-pink-500"
+										>
+											<span className="font-semibold underline">
+												{link.text}
+											</span>
+
+											<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+										</Link>
+									)}
+								</li>
+							)
+						);
+					})}
 				</ul>
-			)}
 
-			{isPaginatorVisible && (
-				<Paginator
-					className="mt-10 lg:mt-20"
-					currentPageIndex={currentPageIndex}
-					numberOfPages={numberOfPages}
-				/>
-			)}
-		</div>
+				{isPaginatorVisible && (
+					<Paginator
+						className="mt-10 lg:mt-20"
+						currentPageIndex={currentPageIndex}
+						numberOfPages={numberOfPages}
+					/>
+				)}
+			</div>
+		)
 	);
 };
 

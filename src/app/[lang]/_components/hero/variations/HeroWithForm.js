@@ -39,66 +39,86 @@ const HeroWithForm = ({ data }) => {
 
 	return (
 		<div className="flex flex-wrap pt-20 pb-32">
-			<div className="w-1/2">
-				<div className="max-w-[34.625rem] text-lg ml-auto mr-16">
-					<h1 className="font-bold text-[3.125rem] leading-[1.25]">{title}</h1>
+			{(title || body || listTitle || listBody.length > 0) && (
+				<div className="w-1/2">
+					<div className="max-w-[34.625rem] text-lg ml-auto mr-16">
+						{title && (
+							<h1 className="font-bold text-[3.125rem] leading-[1.25]">
+								{title}
+							</h1>
+						)}
 
-					<div className="mt-6 [&>*+*]:mt-7 tracking-[0.01em]">
-						<PortableText value={body} />
+						{body && (
+							<div className="mt-6 [&>*+*]:mt-7 tracking-[0.01em]">
+								<PortableText value={body} />
+							</div>
+						)}
+
+						{listTitle && (
+							<h2 className="text-2xl mt-8 font-semibold">{listTitle}</h2>
+						)}
+
+						{listBody.length > 0 && (
+							<ul
+								className="mt-6 [&>*+*]:mt-4 pl-8"
+								style={{
+									"--badge-bg-color": badge.backgroundColor,
+									"--badge-icon-color": badge.iconColor,
+								}}
+							>
+								{listBody.map((item) => {
+									const { _id, body } = item;
+
+									return (
+										_id &&
+										body && (
+											<li key={_id} className="flex items-start">
+												<span className="bg-[var(--badge-bg-color)] text-[var(--badge-icon-color)] inline-block shrink-0 w-10 aspect-square rounded-full grid place-items-center">
+													<FontAwesomeIcon icon={faCheck} />
+												</span>
+
+												<span className="inline-block ml-4">
+													<PortableText value={body} />
+												</span>
+											</li>
+										)
+									);
+								})}
+							</ul>
+						)}
 					</div>
-
-					<h2 className="text-2xl mt-8 font-semibold">{listTitle}</h2>
-
-					<ul
-						className="mt-6 [&>*+*]:mt-4 pl-8"
-						style={{
-							"--badge-bg-color": badge.backgroundColor,
-							"--badge-icon-color": badge.iconColor,
-						}}
-					>
-						{listBody.map((item) => {
-							const { _id, body } = item;
-
-							return (
-								<li key={_id} className="flex items-start">
-									<span className="bg-[var(--badge-bg-color)] text-[var(--badge-icon-color)] inline-block shrink-0 w-10 aspect-square rounded-full grid place-items-center">
-										<FontAwesomeIcon icon={faCheck} />
-									</span>
-
-									<span className="inline-block ml-4">
-										<PortableText value={body} />
-									</span>
-								</li>
-							);
-						})}
-					</ul>
 				</div>
-			</div>
+			)}
 
 			<div className="w-1/2">
 				<div className="bg-white py-10 px-16 rounded-[2.5rem] max-w-[41rem] ml-10">
-					<h4 className="text-3xl font-bold">{formTitle}</h4>
+					{formTitle && <h4 className="text-3xl font-bold">{formTitle}</h4>}
 
-					<ul
-						className="bg-[var(--list-bg-color)] rounded-xl mt-4 p-4 [&>*+*]:mt-2"
-						style={{
-							"--list-bg-color": formListBackgroundColor,
-							"--list-dot-color": formListDotColor,
-						}}
-					>
-						{formList.map((item) => {
-							const { _id, body } = item;
+					{formList.length > 0 && (
+						<ul
+							className="bg-[var(--list-bg-color)] rounded-xl mt-4 p-4 [&>*+*]:mt-2"
+							style={{
+								"--list-bg-color": formListBackgroundColor,
+								"--list-dot-color": formListDotColor,
+							}}
+						>
+							{formList.map((item) => {
+								const { _id, body } = item;
 
-							return (
-								<li
-									key={_id}
-									className="before:bg-[var(--list-dot-color)] before:w-1.5 before:aspect-square before:inline-block before:rounded-full before:shrink-0 flex items-start before:mt-1.5 before:mr-2 text-[.75rem]"
-								>
-									<PortableText value={body} />
-								</li>
-							);
-						})}
-					</ul>
+								return (
+									_id &&
+									body && (
+										<li
+											key={_id}
+											className="before:bg-[var(--list-dot-color)] before:w-1.5 before:aspect-square before:inline-block before:rounded-full before:shrink-0 flex items-start before:mt-1.5 before:mr-2 text-[.75rem]"
+										>
+											<PortableText value={body} />
+										</li>
+									)
+								);
+							})}
+						</ul>
+					)}
 
 					<form onSubmit={handleSubmit} className="[&>*+*]:mt-4 mt-6">
 						<input
@@ -200,7 +220,7 @@ const HeroWithForm = ({ data }) => {
 						</div>
 
 						<button className="w-full p-5 mt-4 bg-pink-500 text-white font-semibold rounded-full">
-							{formButtonText}
+							{formButtonText ?? "Submit"}
 						</button>
 					</form>
 				</div>

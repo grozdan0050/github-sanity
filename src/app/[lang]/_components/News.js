@@ -16,37 +16,50 @@ const News = ({ isAllNews, numberOfNews }) => {
 	}, [isAllNews, numberOfNews]);
 
 	return (
-		news && (
+		news &&
+		supportedLanguages && (
 			<ul className="p-1 border-[1px] border-[#ced2d9]">
 				{news.map((item) => {
+					const { _id, title, _type, publishDate } = item;
+
 					return (
-						<li
-							key={item._id}
-							className="p-1 border-[1px] border-[transparent] hover:border-[#ced2d9]"
-						>
-							<div className="flex items-center gap-2">
-								<div className="hover:bg-[#f2f3f5] p-1 basis-full">
-									<h5 className="font-medium text-[1rem] text-[#101112]">
-										{supportedLanguages
-											.map(({ id }) => {
-												return id + ": " + item.title[id];
-											})
-											.join(" / ")}
-									</h5>
+						_id && (
+							<li
+								key={_id}
+								className="p-1 border-[1px] border-[transparent] hover:border-[#ced2d9]"
+							>
+								<div className="flex items-center gap-2">
+									{(title || publishDate) && (
+										<div className="hover:bg-[#f2f3f5] p-1 basis-full">
+											{title && (
+												<h5 className="font-medium text-[1rem] text-[#101112]">
+													{supportedLanguages
+														.map(({ id }) => {
+															return id + ": " + title[id];
+														})
+														.join(" / ")}
+												</h5>
+											)}
 
-									<span className="text-[0.8125rem] text-[#6e7683]">
-										{item.publishDate}
-									</span>
+											{publishDate && (
+												<span className="text-[0.8125rem] text-[#6e7683]">
+													{publishDate}
+												</span>
+											)}
+										</div>
+									)}
+
+									{_type && _id && (
+										<Link
+											href={_type + ";" + _id}
+											className="hover:bg-[#f2f3f5] p-1"
+										>
+											Edit
+										</Link>
+									)}
 								</div>
-
-								<Link
-									href={item._type + ";" + item._id}
-									className="hover:bg-[#f2f3f5] p-1"
-								>
-									Edit
-								</Link>
-							</div>
-						</li>
+							</li>
+						)
 					);
 				})}
 			</ul>

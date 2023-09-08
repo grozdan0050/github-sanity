@@ -4,23 +4,30 @@ const ListTextWithTitle = ({ data }) => {
 	const { items } = data;
 
 	return (
-		<div className="shell-xs">
-			<ul className="py-24 [&>*+*]:mt-12">
-				{items.map((item) => {
-					const { _id, title, body } = item;
+		items?.length && (
+			<div className="shell-xs">
+				<ul className="py-24 [&>*+*]:mt-12">
+					{items.map((item) => {
+						const { _id, title, body } = item;
 
-					return (
-						<li key={_id}>
-							<h2 className="text-4xl font-bold">{title}</h2>
+						return (
+							(title || body) &&
+							_id && (
+								<li key={_id}>
+									{title && <h2 className="text-4xl font-bold">{title}</h2>}
 
-							<div className="mt-6">
-								<PortableText value={body} />
-							</div>
-						</li>
-					);
-				})}
-			</ul>
-		</div>
+									{body && (
+										<div className="mt-6">
+											<PortableText value={body} />
+										</div>
+									)}
+								</li>
+							)
+						);
+					})}
+				</ul>
+			</div>
+		)
 	);
 };
 

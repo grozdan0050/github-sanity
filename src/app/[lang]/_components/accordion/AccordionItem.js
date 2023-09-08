@@ -39,36 +39,42 @@ const AccordionItem = ({
 	};
 
 	return (
-		<li className={className} style={{ backgroundColor }}>
-			<button
-				className="inline-block flex w-full items-center justify-between"
-				onClick={handleClick}
-			>
-				<span className={titleClassName}>{title}</span>
+		(title || body) && (
+			<li className={className} style={{ backgroundColor }}>
+				{title && (
+					<button
+						className="inline-block flex w-full items-center justify-between"
+						onClick={handleClick}
+					>
+						<span className={titleClassName}>{title}</span>
 
-				<span className={clsx("inline-block", arrowClasses)}>
-					<FontAwesomeIcon
-						ref={arrowIcon}
-						icon={faAngleUp}
-						className={`transition-transform duration-300 ease-in-out ${
-							isActive ? "" : " rotate-180"
-						}`}
-					/>
-				</span>
-			</button>
-
-			<div
-				className={clsx(
-					"collapse-body",
-					bodyClassName,
-					isActive && `max-h-screen ${spaceBetweenBodyAndTitle ?? "mt-4"}`,
-					!isActive && "invisible max-h-0 opacity-0"
+						<span className={clsx("inline-block", arrowClasses)}>
+							<FontAwesomeIcon
+								ref={arrowIcon}
+								icon={faAngleUp}
+								className={`transition-transform duration-300 ease-in-out ${
+									isActive ? "" : " rotate-180"
+								}`}
+							/>
+						</span>
+					</button>
 				)}
-				ref={bodyRef}
-			>
-				<PortableText value={body} />
-			</div>
-		</li>
+
+				{body && (
+					<div
+						className={clsx(
+							"collapse-body",
+							bodyClassName,
+							isActive && `max-h-screen ${spaceBetweenBodyAndTitle ?? "mt-4"}`,
+							!isActive && "invisible max-h-0 opacity-0"
+						)}
+						ref={bodyRef}
+					>
+						<PortableText value={body} />
+					</div>
+				)}
+			</li>
+		)
 	);
 };
 

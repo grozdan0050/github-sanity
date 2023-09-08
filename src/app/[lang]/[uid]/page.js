@@ -35,14 +35,14 @@ export default async function Page({ params }) {
 
 	const headerAndHeroBackgroundColor = page?.body[0].backgroundColor;
 
-	if (preview && preview.token) {
-		return (
-			<div
-				className="grid h-full grid-rows-[auto_1fr_auto] font-[poppins] text-[var(--text-color)]"
-				style={{
-					"--bg-color": headerAndHeroBackgroundColor ?? "#ffffff",
-				}}
-			>
+	return (
+		<div
+			className="grid h-full grid-rows-[auto_1fr_auto] font-[poppins] text-[var(--text-color)]"
+			style={{
+				"--bg-color": headerAndHeroBackgroundColor ?? "#ffffff",
+			}}
+		>
+			{preview?.token && (
 				<PreviewProvider token={preview.token}>
 					<PreviewPage
 						page={page}
@@ -53,22 +53,17 @@ export default async function Page({ params }) {
 						locale={locale}
 					/>
 				</PreviewProvider>
-			</div>
-		);
-	}
+			)}
 
-	return (
-		<div
-			className="grid h-full grid-rows-[auto_1fr_auto] font-[poppins] text-[var(--text-color)]"
-			style={{
-				"--bg-color": headerAndHeroBackgroundColor ?? "#ffffff",
-			}}
-		>
-			<Header header={header} settings={settings} />
+			{!preview?.token && (
+				<>
+					<Header header={header} settings={settings} />
 
-			<RenderPageTypes types={page?.body} news={news} />
+					<RenderPageTypes types={page?.body} news={news} />
 
-			<Footer footer={footer} />
+					<Footer footer={footer} />
+				</>
+			)}
 		</div>
 	);
 }

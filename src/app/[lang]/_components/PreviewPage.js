@@ -19,15 +19,11 @@ const PreviewPage = ({ page, header, settings, footer, news, locale }) => {
 
 	return (
 		<>
-			{headerData && settingsData && (
-				<Header header={headerData} settings={settingsData} />
-			)}
+			<Header header={headerData} settings={settingsData} />
 
-			{pageData?.body && newsData && (
-				<RenderPageTypes types={pageData.body} news={newsData} />
-			)}
+			<RenderPageTypes types={pageData.body} news={newsData} />
 
-			{footerData && <Footer footer={footerData} />}
+			<Footer footer={footerData} />
 
 			<div className="fixed bottom-4 right-4 z-[100]">
 				<a
