@@ -1,6 +1,7 @@
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
 import SanityNextImage from "./SanityNextImage";
+import Search from "./Search/Search";
 
 const Header = ({ header, settings }) => {
 	return (
@@ -8,6 +9,8 @@ const Header = ({ header, settings }) => {
 			<div className="shell">
 				<div className="p-8 flex items-center justify-between">
 					{header.logo && <SanityNextImage data={header.logo} />}
+
+					<Search />
 
 					<nav className="flex items-center">
 						{header.navigation.length > 0 && (
